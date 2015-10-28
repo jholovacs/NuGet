@@ -10,6 +10,12 @@
     <CodeAnalysisRuleSet>..\..\NuGet.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis Condition="'$(EnableCodeAnalysis)'=='true'">true</RunCodeAnalysis>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -35,7 +41,9 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

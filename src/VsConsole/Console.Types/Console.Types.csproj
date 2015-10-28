@@ -10,6 +10,9 @@
     <CodeAnalysisRuleSet>..\..\..\NuGet.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis Condition="'$(EnableCodeAnalysis)'=='true'">true</RunCodeAnalysis>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

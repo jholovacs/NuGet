@@ -105,18 +105,6 @@
       <Project>{f879f274-efa0-4157-8404-33a19b4e6aec}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\NuGet.Client.V2.VisualStudio\NuGet.Client.V2.VisualStudio.csproj">
-      <Project>{4e58e50b-8aaf-49eb-92c9-1bc4729d93c4}</Project>
-      <Name>NuGet.Client.V2.VisualStudio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\VisualStudioResources\VisualStudioResources.csproj">
-      <Project>{211c558c-1712-44e9-a959-fe2d2aa1de34}</Project>
-      <Name>VisualStudioResources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\VisualStudio\VisualStudio.csproj">
-      <Project>{6146ca62-cc16-422c-a105-3e81f7452aa6}</Project>
-      <Name>VisualStudio</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\VsConsole\Console.Types\Console.Types.csproj">
       <Project>{6fd11460-39a3-4a10-ba63-7541b0a7d053}</Project>
       <Name>Console.Types</Name>

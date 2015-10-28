@@ -46,10 +46,6 @@
       <Project>{53AB7187-CDF3-48B5-B90E-8919D3CB904D}</Project>
       <Name>Options</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\VisualStudio\VisualStudio.csproj">
-      <Project>{6146CA62-CC16-422C-A105-3E81F7452AA6}</Project>
-      <Name>VisualStudio</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\Build\NuGet.Test.targets" />

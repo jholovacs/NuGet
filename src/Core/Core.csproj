@@ -36,13 +36,13 @@
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)'=='14.0'">
-	  <ItemGroup>
-	    <Reference Include="Microsoft.VisualStudio.ProjectSystem.Interop">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.ProjectSystem.Interop">
           <HintPath>..\..\lib\Microsoft.VisualStudio.ProjectSystem.Interop.dll</HintPath>
           <EmbedInteropTypes>True</EmbedInteropTypes>
         </Reference>
-	  </ItemGroup>
-	</When>
+      </ItemGroup>
+    </When>
   </Choose>
   <ItemGroup>
     <Compile Include="..\..\Common\CommonResources.cs">

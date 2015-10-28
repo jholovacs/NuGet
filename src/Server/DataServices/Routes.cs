@@ -47,14 +47,12 @@ namespace NuGet.Server
                                new { httpMethod = new HttpMethodConstraint("GET") },
                                context => CreatePackageService().DownloadPackage(context.HttpContext));
 
-#if DEBUG
             // The default route is http://{root}/nuget/Packages
             var factory = new DataServiceHostFactory();
             var serviceRoute = new ServiceRoute("nuget", factory, typeof(Packages));
             serviceRoute.Defaults = new RouteValueDictionary { { "serviceType", "odata" } };
             serviceRoute.Constraints = new RouteValueDictionary { { "serviceType", "odata" } };
             routes.Add("nuget", serviceRoute);
-#endif
         }
 
         private static IPackageService CreatePackageService()
