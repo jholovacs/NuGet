@@ -11,6 +11,7 @@ namespace NuGet.Server.Infrastructure
             Bind<IServerPackageRepository>().ToConstant(packageRepository);
             Bind<IPackageService>().To<PackageService>();
             Bind<IPackageAuthenticationService>().To<PackageAuthenticationService>();
+			Bind<NLog.ILogger>().ToMethod(p => NLog.LogManager.GetLogger(p.Request.Target.Member.DeclaringType.ToString()));
         }
     }
 }

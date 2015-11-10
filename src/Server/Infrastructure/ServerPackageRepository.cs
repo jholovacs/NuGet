@@ -27,6 +27,7 @@ namespace NuGet.Server.Infrastructure
         private readonly object _lockObj = new object();
         private readonly IFileSystem _fileSystem;
         private readonly IPackagePathResolver _pathResolver;
+		private readonly NLog.ILogger _logger = NLog.LogManager.GetLogger("ServerPackageRepository");
         private readonly Func<string, bool, bool> _getSetting;
         private FileSystemWatcher _fileWatcher;
         private readonly string _filter = String.Format(CultureInfo.InvariantCulture, "*{0}", Constants.PackageExtension);
@@ -153,21 +154,28 @@ namespace NuGet.Server.Infrastructure
         /// </summary>
         public override void AddPackage(IPackage package)
         {
-            string fileName = _pathResolver.GetPackageFileName(package);
-            if (_fileSystem.FileExists(fileName) && !AllowOverrideExistingPackageOnPush)
-            {
-                throw new InvalidOperationException(String.Format(NuGetResources.Error_PackageAlreadyExists, package));
-            }
+			try {
+				string fileName = _pathResolver.GetPackageFileName(package);
+				if (_fileSystem.FileExists(fileName) && !AllowOverrideExistingPackageOnPush)
+				{
+					throw new InvalidOperationException(String.Format(NuGetResources.Error_PackageAlreadyExists, package));
+				}
 
-            lock (_lockObj)
-            {
-                using (Stream stream = package.GetStream())
-                {
-                    _fileSystem.AddFile(fileName, stream);
-                }
+				lock (_lockObj)
+				{
+					using (Stream stream = package.GetStream())
+					{
+						_fileSystem.AddFile(fileName, stream);
+					}
 
-                InvalidatePackages();
-            }
+					InvalidatePackages();
+				}
+			}
+			catch(Exception ex)
+			{
+				_logger.Error(ex, "AddPackage(IPackage)");
+				throw;
+			}
         }
 
         /// <summary>
